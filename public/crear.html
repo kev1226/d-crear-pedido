@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crear Pedido</title>
+</head>
+<body>
+  <h1>Crear Pedido</h1>
+  <form id="pedidoForm">
+    <label>Producto:</label><br />
+    <input type="text" id="producto" required /><br />
+    <label>Cantidad:</label><br />
+    <input type="number" id="cantidad" required /><br />
+    <label>Cliente:</label><br />
+    <input type="text" id="cliente" required /><br /><br />
+    <button type="submit">Enviar Pedido</button>
+  </form>
+
+  <pre id="respuesta"></pre>
+
+  <script>
+    document.getElementById('pedidoForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const res = await fetch('/api/pedidos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          producto: document.getElementById('producto').value,
+          cantidad: parseInt(document.getElementById('cantidad').value),
+          cliente: document.getElementById('cliente').value
+        })
+      });
+      const data = await res.json();
+      document.getElementById('respuesta').textContent = JSON.stringify(data, null, 2);
+    });
+  </script>
+</body>
+</html>
