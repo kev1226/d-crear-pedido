@@ -30,10 +30,10 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/crear-pedido:latest
 
       - name: Install Railway CLI
-        run: npm install -g railway
+        run: npm install @railway/cli
 
-      - name: Link and Deploy to Railway
+      - name: Deploy to Railway
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
         run: |
-          railway up --service docker-crear --detach
+          npx railway up --service docker-crear --detach
