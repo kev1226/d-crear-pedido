@@ -24,7 +24,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/kalemat/01-crear-pedido
+          tags: ${{ secrets.DOCKER_USERNAME }}/01-crear-pedido
 
       - name: Trigger Railway redeploy
         run: |
