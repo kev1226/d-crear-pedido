@@ -35,4 +35,4 @@ jobs:
         run: |
           railway login --token $RAILWAY_TOKEN
           railway link --project ${{ secrets.RAILWAY_PROJECT_ID }}
-          railway up --service crear-pedido --detach
+          railway up --service docker-crear --detach
